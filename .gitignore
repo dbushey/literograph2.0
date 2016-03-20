@@ -62,3 +62,5 @@ target/
 .ipynb_checkpoints
 
 .DS_store
+.vagrant/
+db.sqlite3
