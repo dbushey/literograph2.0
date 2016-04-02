@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def reader_view(request):
+    return render(request, 'lito/reader_view.html', {'reader_view': reader_view})
