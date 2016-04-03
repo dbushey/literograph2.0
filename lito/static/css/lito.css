@@ -1,5 +1,10 @@
+/* Check if this is necessary Google Maps API */
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { height: 80% }
+  .hidden { display: none; }
 
-h1 a {
+    h1 a {
     color: #FCA205;
     font-family: 'Lobster'
 }
