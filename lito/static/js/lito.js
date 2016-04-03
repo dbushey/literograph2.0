@@ -1,3 +1,22 @@
+var jd;
+
+$(document).ready(function() {
+
+  $.getJSON('/story_points_json', function(jd) {
+
+    console.log(jd);
+    jd = jd;
+  });
+
+});
+
+
+
+
+
+
+
+
 function initialize() {
         var myLatlng = new google.maps.LatLng(40.784019, -73.965398)
         var image = "/static/img/icon_2249_small.png"

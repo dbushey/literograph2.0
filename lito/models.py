@@ -25,6 +25,9 @@ class StoryPoint (models.Model):
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
+    longitute = models.DecimalField(max_digits=9, decimal_places=6, null=True) 
+    
 
     def publish(self):
         self.published_date = timezone.now()
