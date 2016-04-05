@@ -42,6 +42,37 @@ function initialize_map(story_points) {
       center: {lat: center_lat, lng: center_lng},
       zoom: 12
     });
+  var infowindow = new google.maps.InfoWindow();
+
+  for (i = 0; i < story_points.length; i++) { 
+    var lat = parseFloat(story_points[i].fields.latitude);
+    var lng = parseFloat(story_points[i].fields.longitude);
+    var title = story_points[i].fields.title;
+    var loc_name = story_points[i].fields.location_name;
+    var text = story_points[i].fields.text;
+
+    var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">' + loc_name + '</h1>'+
+      '<h2 id="secondHeading" class="secondHeading">' + title + '</h2>'+
+      '<div id="bodyContent">'+
+      '<p>' + text + '</p>'+
+      '</div>'+
+      '</div>';
+
+    var marker = new google.maps.Marker({
+      position: {lat: lat, lng: lng},
+      map: map,
+      animation: google.maps.Animation.DROP,
+      contentString: contentString
+    });
+
+    google.maps.event.addListener(marker, 'click', function() { 
+        infowindow.setContent(this.contentString);
+        infowindow.open(map,this);
+    });
+  };
 
 }
 
