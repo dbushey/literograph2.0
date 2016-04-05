@@ -21,7 +21,7 @@ sudo pip3 install django
 sudo pip3 install psycopg2
 
 # Add bash aliases
-echo "alias runs='python3 /vagrant/manage.py runserver [::]:8001'" >> ~/.bash_aliases && source ~/.bash_aliases
-echo "alias mm='python3 /vagrant/manage.py makemigrations'" >> ~/.bash_aliases && source ~/.bash_aliases
-echo "alias migrate='python3 /vagrant/manage.py migrate'" >> ~/.bash_aliases && source ~/.bash_aliases
-echo "alias shell='python3 /vagrant/manage.py shell'" >> ~/.bash_aliases && source ~/.bash_aliases
+echo "alias runs='python3 manage.py runserver [::]:8001'" >> ~/.bash_aliases && source ~/.bash_aliases
+echo "alias mm='python3 manage.py makemigrations'" >> ~/.bash_aliases && source ~/.bash_aliases
+echo "alias migrate='python3 manage.py migrate'" >> ~/.bash_aliases && source ~/.bash_aliases
+echo "alias shell='python3 manage.py shell'" >> ~/.bash_aliases && source ~/.bash_aliases

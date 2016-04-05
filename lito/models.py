@@ -26,7 +26,7 @@ class StoryPoint (models.Model):
     published_date = models.DateTimeField(
             blank=True, null=True)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
-    longitute = models.DecimalField(max_digits=9, decimal_places=6, null=True) 
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True) 
     
 
     def publish(self):
