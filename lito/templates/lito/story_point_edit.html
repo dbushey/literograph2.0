@@ -6,4 +6,53 @@
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
+
+    <div id="map_search"></div>
+
+    <script>
+
+      function initMap() {
+        var nyc = {lat: 40.704286, lng: -74.540035};
+
+        var map = new google.maps.Map(document.getElementById('map_search'), {
+          zoom: 12,
+          center: nyc
+        });
+
+        google.maps.event.addListener(map, "click", function (e) {
+            //lat and lng is available in e object
+            var latLng = e.latLng;
+
+            var lat = latLng.lat();
+            var lat = lat.toFixed(6);
+
+            var lng = latLng.lng();
+            var lng = lng.toFixed(6);
+
+            console.log(lat, lng);
+
+            $("#id_latitude").val(lat);
+
+            $("#id_longitude").val(lng);
+
+        });
+
+      }
+
+      // Creates Map
+      $(document).ready(function() {
+        initMap();
+
+      });
+
+      
+
+
+
+    </script>
+
+
+    </div>
+
+
 {% endblock %}
