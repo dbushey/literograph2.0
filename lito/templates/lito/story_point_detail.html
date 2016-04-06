@@ -1,0 +1,16 @@
+{% extends 'lito/base.html' %}
+
+{% block content %}
+    <div class="story_point">
+        {% if story_point.location_name %}
+            <div class="location">
+                {{ post.location_name }}
+                Latitude: {{story_point.latitude}}, 
+                Longitude: {{story_point.longitude}}
+            </div>
+        {% endif %}
+        
+        <h1>{{ story_point.title }}</h1>
+        <p>{{ story_point.text|linebreaks }}</p>
+    </div>
+{% endblock %}
