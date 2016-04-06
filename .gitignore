@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.bash_history
 
 # C extensions
 *.so
