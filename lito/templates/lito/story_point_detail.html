@@ -4,13 +4,49 @@
     <div class="story_point">
         {% if story_point.location_name %}
             <div class="location">
-                {{ post.location_name }}
+                <h2>{{ story_point.location_name }}</h2>
                 Latitude: {{story_point.latitude}}, 
                 Longitude: {{story_point.longitude}}
-            </div>
+
+                <div id="map_detail"></div>
+    
         {% endif %}
         
         <h1>{{ story_point.title }}</h1>
         <p>{{ story_point.text|linebreaks }}</p>
     </div>
+
+
+    <script>
+
+      function initMap() {
+        var myLatLng = {lat: {{story_point.latitude}}, lng: {{story_point.longitude}}};
+
+        var map = new google.maps.Map(document.getElementById('map_detail'), {
+          zoom: 12,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+
+      // Creates Map
+      $(document).ready(function() {
+        initMap();
+
+      });
+
+
+    </script>
+
+
+    </div>
+
+
 {% endblock %}
+
+
