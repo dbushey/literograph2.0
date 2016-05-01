@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import StoryPoint
+from .models import StoryPoint, Story, Location
 import json
 from django.http import HttpResponse
 from django.core import serializers
@@ -7,8 +7,17 @@ from .forms import StoryPointForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
+
+def landing_page(request):
+    story_list = Story.objects.all()
+    return render(request, 'lito/landing_page.html', {'story_list': story_list})
+
 def reader_view(request):
     return render(request, 'lito/reader_view.html', {'reader_view': reader_view})
+
+def story_detail(request, pk):
+    story = get_object_or_404(StoryPoint, pk=pk)
+    return 0
 
 def story_points_json(request):
     storypoints_as_json = serializers.serialize('json', StoryPoint.objects.all())

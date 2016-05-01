@@ -1,0 +1,17 @@
+{% extends 'lito/base.html' %}
+
+    {% block content %}
+
+    <h1>Read a Story</h1>
+
+    {% for story in story_list %}
+        <div>
+            <h2><a href="{% url 'story_detail' pk=story.pk %}">{{ story.title }}</a></h1>
+            <p>By: {{ story.author }}</p>
+        </div>
+    {% endfor %}
+
+    
+
+
+    {% endblock %}

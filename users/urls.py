@@ -4,4 +4,8 @@ from . import views
 urlpatterns = [
 	url(r'^login/$', 'django.contrib.auth.views.login'),
 	url(r'^logout/$', 'django.contrib.auth.views.logout'),
+    url(r'^signup/$', views.register, name='register'),
+
 ]
+
+
