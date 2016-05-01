@@ -19,8 +19,10 @@ def story_list(request):
     story_list = Story.objects.filter(author=author)
     return render(request, 'lito/story_list.html', {'story_list': story_list})
 
-
-
+@login_required
+def story_new(request):
+    add_story = StoryForm()
+    return render(request, 'lito/story_edit.html', {'form': form})
 
 def story_detail(request, pk):
     story = get_object_or_404(StoryPoint, pk=pk)

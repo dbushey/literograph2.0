@@ -4,6 +4,7 @@ from django.utils import timezone
 class Story (models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
+    description = models.CharField(max_length=500, null=True)
     published_date = models.DateTimeField(
             blank=True, null=True)
 
