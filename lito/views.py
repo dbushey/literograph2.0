@@ -6,14 +6,21 @@ from django.core import serializers
 from .forms import StoryPointForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 def landing_page(request):
     story_list = Story.objects.all()
     return render(request, 'lito/landing_page.html', {'story_list': story_list})
 
-def reader_view(request):
-    return render(request, 'lito/reader_view.html', {'reader_view': reader_view})
+@login_required
+def story_list(request): 
+    author = request.user
+    story_list = Story.objects.filter(author=author)
+    return render(request, 'lito/story_list.html', {'story_list': story_list})
+
+
+
 
 def story_detail(request, pk):
     story = get_object_or_404(StoryPoint, pk=pk)
@@ -43,3 +50,10 @@ def story_point_new(request):
     else:
         form = StoryPointForm()
     return render(request, 'lito/story_point_edit.html', {'form': form})
+
+def reader_view(request):
+    return render(request, 'lito/reader_view.html', {'reader_view': reader_view})
+
+
+
+

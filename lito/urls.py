@@ -7,7 +7,7 @@ urlpatterns = [
     
     # Writer's URLs
     # 2. Story list page
-    #url(r'^story/$', views.story_list, name='story_list'),
+    url(r'^story/$', views.story_list, name='story_list'),
     # 3. Create new story
     #url(r'^story/new/$', views.story_new, name='story_new'),
     # 4. Story detail page (create/edit/delete story points)

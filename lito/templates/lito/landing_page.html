@@ -21,11 +21,11 @@
         </div>
 
         <div>
-            <a href="{% url 'register' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign Up</a>
+            <a href="{% url 'register' %}?next={% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign Up</a>
         </div>
         <br><br>
         <div>
-            <a href="{% url 'signin' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign In</a>
+            <a href="{% url 'signin' %}?next={% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign In</a>
         </div>
 
     </div>

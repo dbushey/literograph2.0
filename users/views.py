@@ -3,6 +3,7 @@ from django.utils import timezone
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login
 
 
 def register(request):
@@ -10,7 +11,13 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
-            return HttpResponseRedirect("/books/")
+            # Log the user in automatically in next two lines
+            new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+            login(request, new_user)
+            # TODO Redirect should be updated to request the '?next='' paramter
+            return HttpResponseRedirect("/story/")
     else:
         form = UserCreationForm()
     return render(request, "registration/signup.html", {
