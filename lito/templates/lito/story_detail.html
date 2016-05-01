@@ -1,0 +1,49 @@
+{% extends 'lito/base.html' %}
+
+{% block content %}
+    <div class="writer_view">
+      <div id="story_point_list">  
+        <div class="row">
+      
+        <div class="col-md-6">
+            <h1>{{ story.title }}</h1>
+            <p>By: {{ story.author }}</p>
+            <br><br>
+
+            <h2>Story Points</h2>
+
+            {% if story_points_list %}
+            {% for story_point in story_points_list %}
+                <div>
+                    <h3><a href="{% url 'story_point_detail' pk=story_point.pk %}">{{ story_point.title }}</a></h3>    
+                </div>
+            {% endfor %}
+            {% else %}
+
+            <div>
+                <h2>You haven't writen any story points. Click the button on the right to start writing.</h2> 
+            </div>
+
+
+
+            {% endif %}
+        </div>
+
+         <div class="col-md-6">
+            <h1>Write a new Story Point</h1>
+        </div>
+
+        <div>
+            <a href="{% url 'story_point_new' pk=story.pk %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Start Writing</a>
+        </div>
+
+    </div>
+
+
+      </div>
+    </div>
+
+
+{% endblock %}
+
+

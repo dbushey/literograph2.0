@@ -24,6 +24,7 @@ class StoryPoint (models.Model):
             blank=True, null=True)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True) 
+    story = models.ForeignKey(Story)
     
 
     def publish(self):

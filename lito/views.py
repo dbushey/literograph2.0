@@ -3,7 +3,7 @@ from .models import StoryPoint, Story, Location
 import json
 from django.http import HttpResponse
 from django.core import serializers
-from .forms import StoryPointForm
+from .forms import StoryPointForm, StoryForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -21,12 +21,27 @@ def story_list(request):
 
 @login_required
 def story_new(request):
-    add_story = StoryForm()
+    form = StoryForm()
     return render(request, 'lito/story_edit.html', {'form': form})
 
+@login_required
+def story_new(request):
+    if request.method == "POST":
+        form = StoryForm(request.POST)
+        if form.is_valid():
+            story = form.save(commit=False)
+            story.author = request.user
+            story.save()
+            return redirect('story_detail', pk=story.pk)
+    else:
+        form = StoryForm()
+    return render(request, 'lito/story_edit.html', {'form': form})
+
+@login_required
 def story_detail(request, pk):
-    story = get_object_or_404(StoryPoint, pk=pk)
-    return 0
+    story = get_object_or_404(Story, pk=pk)
+    story_points_list = StoryPoint.objects.filter(story=story)
+    return render(request, 'lito/story_detail.html', {'story': story, 'story_points_list': story_points_list})
 
 def story_points_json(request):
     storypoints_as_json = serializers.serialize('json', StoryPoint.objects.all())
@@ -41,12 +56,14 @@ def story_point_new(request):
     return render(request, 'lito/story_point_edit.html', {'form': form})
 
 @login_required
-def story_point_new(request):
+def story_point_new(request, pk):
     if request.method == "POST":
         form = StoryPointForm(request.POST)
+        story = get_object_or_404(Story, pk=pk)
         if form.is_valid():
             story_point = form.save(commit=False)
             story_point.author = request.user
+            story_point.story = story
             story_point.save()
             return redirect('story_point_detail', pk=story_point.pk)
     else:
@@ -55,6 +72,22 @@ def story_point_new(request):
 
 def reader_view(request):
     return render(request, 'lito/reader_view.html', {'reader_view': reader_view})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
