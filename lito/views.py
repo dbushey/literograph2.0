@@ -43,10 +43,6 @@ def story_detail(request, pk):
     story_points_list = StoryPoint.objects.filter(story=story)
     return render(request, 'lito/story_detail.html', {'story': story, 'story_points_list': story_points_list})
 
-def story_points_json(request):
-    storypoints_as_json = serializers.serialize('json', StoryPoint.objects.all())
-    return HttpResponse(json.dumps(storypoints_as_json), content_type='application/json') 
-
 def story_point_detail(request, pk):
     story_point = get_object_or_404(StoryPoint, pk=pk)
     return render(request, 'lito/story_point_detail.html', {'story_point': story_point})
@@ -75,9 +71,10 @@ def reader_view(request, pk):
     story_points_list = StoryPoint.objects.filter(story=story)
     return render(request, 'lito/reader_view.html', {'story': story, 'story_points_list': story_points_list})
 
-
-
-
+def story_points_json(request, pk):
+    story = get_object_or_404(Story, pk=pk) 
+    storypoints_as_json = serializers.serialize('json', StoryPoint.objects.filter(story=story))
+    return HttpResponse(json.dumps(storypoints_as_json), content_type='application/json') 
 
 
 

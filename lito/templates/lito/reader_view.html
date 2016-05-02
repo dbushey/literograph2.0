@@ -1,8 +1,9 @@
 {% extends 'lito/base.html' %}
-
+{% load staticfiles%}
 {% block content %}
     <div class="reader_view">
-    <div id="story">  
+    <div id="story">
+        <div id="story_data" pk="{{ story.pk }}"></div>
         <div class="row">
          <div class="col-md-12">
             <h1>{{ story.title }}</h1>
@@ -37,6 +38,8 @@
 
     </div>
     </div>
+
+    <script type="text/javascript" src="{% static 'js/lito.js' %}"></script>
 
 {% endblock %}
 

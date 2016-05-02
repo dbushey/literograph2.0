@@ -1,9 +1,16 @@
 var map;
 var story_points_debug; 
+var story_pk = 0;
 
  $(document).ready(function() {
 
-  $.getJSON('/story_points_json', function(jd) {
+  // Get the story ID from HTML
+  story_pk = $("#story_data").attr("pk");
+  console.log("Story PK:" + story_pk);
+
+  // Use the story PK to get JSON for this story!
+
+  $.getJSON('/story_points_json/' + story_pk + '/', function(jd) {
 
     console.log(jd);
 
