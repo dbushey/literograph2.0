@@ -20,12 +20,24 @@
             <h1>Write your own Story</h1>
         </div>
 
+
+        
+
         <div>
-            <a href="{% url 'register' %}?next={% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign Up</a>
-        </div>
-        <br><br>
-        <div>
-            <a href="{% url 'signin' %}?next={% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign In</a>
+            {% if user.is_anonymous %}
+            <div>
+                <a href="{% url 'register' %}?next={% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign Up</a>
+            </div>
+            <br><br>
+            <div>
+                <a href="{% url 'signin' %}?next={% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign In</a>
+            </div>
+            {% else %}
+            <div>
+                <a href="{% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Go!</a>
+            </div>
+              {% endif %}
+
         </div>
 
     </div>
