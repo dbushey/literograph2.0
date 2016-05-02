@@ -7,7 +7,7 @@ class StoryPointForm(forms.ModelForm):
 
     class Meta:
         model = StoryPoint
-        fields = ('title', 'location_name', 'latitude', 'longitude',)
+        fields = ('title', 'location_name', 'latitude', 'longitude', 'text',)
 
 class StoryForm(forms.ModelForm):
 

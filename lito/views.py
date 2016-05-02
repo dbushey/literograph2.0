@@ -70,10 +70,10 @@ def story_point_new(request, pk):
         form = StoryPointForm()
     return render(request, 'lito/story_point_edit.html', {'form': form})
 
-def reader_view(request):
-    return render(request, 'lito/reader_view.html', {'reader_view': reader_view})
-
-
+def reader_view(request, pk):
+    story = get_object_or_404(Story, pk=pk)
+    story_points_list = StoryPoint.objects.filter(story=story)
+    return render(request, 'lito/reader_view.html', {'story': story, 'story_points_list': story_points_list})
 
 
 

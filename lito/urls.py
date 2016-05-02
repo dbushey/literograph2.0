@@ -17,7 +17,7 @@ urlpatterns = [
     # See a single story point
     url(r'^story_point/(?P<pk>[0-9]+)/$', views.story_point_detail, name='story_point_detail'),
     # Reader's URLs
-    url(r'^reader_view/$', views.reader_view, name='reader_view'),
+    url(r'^reader_view/(?P<pk>[0-9]+)/$', views.reader_view, name='reader_view'),
     # Cheating API for the reader view | Later add Django REST to filter story
     url(r'^story_points_json$', views.story_points_json, name='story_points_json'),
 ]
