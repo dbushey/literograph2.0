@@ -25,6 +25,7 @@ class StoryPoint (models.Model):
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True) 
     story = models.ForeignKey(Story)
+    img_url = models.URLField(max_length=200, null=True)
     
 
     def publish(self):

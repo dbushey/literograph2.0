@@ -13,6 +13,9 @@
         {% endif %}
         
         <h1>{{ story_point.title }}</h1>
+        {% if story_point.img_url %}
+          <img src="{{ story_point.img_url }}" width="500" height="350">
+        {% endif %}
         <p>{{ story_point.text|linebreaks }}</p>
     </div>
 

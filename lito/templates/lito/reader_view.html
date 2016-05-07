@@ -21,7 +21,10 @@
                 {% for story_point in story_points_list %}
                 <div id="storypoint_{{ story_point.pk }}">
                     <h3>{{ story_point.title }}</h3>
-                    <p>(@{{ story_point.location_name}})   
+                    <p>(@{{ story_point.location_name }})</p>
+                    {% if story_point.img_url %}
+                        <img src="{{ story_point.img_url }}" width="500" height="350">
+                    {% endif %}
                     <p>{{ story_point.text }}</p> 
                 </div>
                 {% endfor %}
