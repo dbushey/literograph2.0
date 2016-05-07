@@ -25,7 +25,10 @@ class StoryPoint (models.Model):
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True) 
     story = models.ForeignKey(Story)
-    img_url = models.URLField(max_length=200, null=True)
+    img_url = models.URLField(max_length=200, null=True, blank=True)
+    soundcloud_url = models.URLField(max_length=200, null=True, blank=True)
+    youtube_url = models.URLField(max_length=200, null=True, blank=True)
+
     
 
     def publish(self):
