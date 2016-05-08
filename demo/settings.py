@@ -141,6 +141,9 @@ ALLOWED_HOSTS = ['*']
 
 DEBUG = False
 
+# experimental, remove if issues
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 try:
     from .local_settings import *
 except ImportError:
