@@ -60,6 +60,8 @@ def story_point_new(request, pk):
             story_point = form.save(commit=False)
             story_point.author = request.user
             story_point.story = story
+            if story_point.youtube_url:
+                story_point.youtube_url = parse_yt_url(story_point.youtube_url)
             story_point.save()
             return redirect('story_point_detail', pk=story_point.pk)
     else:
@@ -76,9 +78,9 @@ def story_points_json(request, pk):
     storypoints_as_json = serializers.serialize('json', StoryPoint.objects.filter(story=story))
     return HttpResponse(json.dumps(storypoints_as_json), content_type='application/json') 
 
-
-
-
+def parse_yt_url(url):
+    embed_url = "https://www.youtube.com/embed/{}"
+    return embed_url.format(url.split("=")[1])
 
 
 
