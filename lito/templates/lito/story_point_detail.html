@@ -2,9 +2,11 @@
 
 {% block content %}
     <div class="story_point">
+    <a href="{% url 'story_detail' pk=story_point.story.pk %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Back</a>
+      <h1>{{ story_point.title }}</h1>
         {% if story_point.location_name %}
             <div class="location">
-                <h2>{{ story_point.location_name }}</h2>
+                <h2>(@{{ story_point.location_name }})</h2>
                 Latitude: {{story_point.latitude}}, 
                 Longitude: {{story_point.longitude}}
 
@@ -12,7 +14,7 @@
     
         {% endif %}
         
-        <h1>{{ story_point.title }}</h1>
+        
         {% if story_point.img_url %}
           <img src="{{ story_point.img_url }}" width="500" height="350">
         {% endif %}
