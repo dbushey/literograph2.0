@@ -31,7 +31,7 @@
                     {% if story_point.youtube_url %}
                         <iframe width="560" height="315" src="{{ story_point.youtube_url }}" frameborder="0" allowfullscreen></iframe>
                     {% endif %}
-                    <p>{{ story_point.text }}</p> 
+                    <div class="text">{{ story_point.text }}</div> 
                 </div>
                 {% endfor %}
                 {% else %}
