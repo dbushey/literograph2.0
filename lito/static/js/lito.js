@@ -6,13 +6,10 @@ var story_pk = 0;
 
   // Get the story ID from HTML
   story_pk = $("#story_data").attr("pk");
-  console.log("Story PK:" + story_pk);
 
   // Use the story PK to get JSON for this story!
 
   $.getJSON('/story_points_json/' + story_pk + '/', function(jd) {
-
-    console.log(jd);
 
     story_points_json = jd;
 
@@ -20,7 +17,6 @@ var story_pk = 0;
 
     for (i = 0; i < story_points.length; i++) { 
       var x = story_points[i].fields.location_name;
-      console.log(x);
     }
 
     story_points_debug = story_points;
@@ -51,6 +47,8 @@ function initialize_map(story_points) {
     });
   var infowindow = new google.maps.InfoWindow();
 
+  var bounds = new google.maps.LatLngBounds();
+
   for (i = 0; i < story_points.length; i++) { 
     var lat = parseFloat(story_points[i].fields.latitude);
     var lng = parseFloat(story_points[i].fields.longitude);
@@ -75,11 +73,15 @@ function initialize_map(story_points) {
       contentString: contentString
     });
 
+    bounds.extend(marker.getPosition());
+
     google.maps.event.addListener(marker, 'click', function() { 
         infowindow.setContent(this.contentString);
         infowindow.open(map,this);
     });
   };
+
+  map.fitBounds(bounds);
 
 }
 
