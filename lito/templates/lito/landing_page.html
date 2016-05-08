@@ -9,7 +9,7 @@
 
             {% for story in story_list %}
                 <div>
-                    <h2><a href="{% url 'reader_view' pk=story.pk %}">{{ story.title }}</a></h2>
+                    <h2><a href="{% url 'reader_view' pk=story.pk %}" title="{{ story.description }}">{{ story.title }}</a></h2>
                     <p>By: {{ story.author }}</p>
                 </div>
             {% endfor %}
