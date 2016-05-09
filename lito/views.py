@@ -62,6 +62,7 @@ def story_point_new(request, pk):
             story_point.story = story
             if story_point.youtube_url:
                 story_point.youtube_url = parse_yt_url(story_point.youtube_url)
+            story_point.num_order = set_num_order(story)
             story_point.save()
             return redirect('story_point_detail', pk=story_point.pk)
     else:
@@ -82,9 +83,10 @@ def parse_yt_url(url):
     embed_url = "https://www.youtube.com/embed/{}"
     return embed_url.format(url.split("=")[1])
 
-
-
-
+def set_num_order(story):
+    story_points_list = StoryPoint.objects.filter(story=story)
+    largest = max(story_point.num_order for story_point in story_points_list)
+    return largest + 1
 
 
 

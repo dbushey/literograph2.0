@@ -28,6 +28,7 @@ class StoryPoint (models.Model):
     img_url = models.URLField(max_length=200, null=True, blank=True)
     soundcloud_url = models.URLField(max_length=200, null=True, blank=True)
     youtube_url = models.URLField(max_length=200, null=True, blank=True)
+    num_order = models.PositiveSmallIntegerField()
 
     
 
