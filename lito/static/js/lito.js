@@ -1,6 +1,7 @@
 var map;
 var story_points_list; 
 var story_pk = 0;
+var markers = [];
 
  $(document).ready(function() {
 
@@ -37,7 +38,7 @@ function initialize_map(story_points) {
   
   var center_lat = parseFloat(story_points[0].fields.latitude);
   var center_lng = parseFloat(story_points[0].fields.longitude);
-  var map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById("map"), {
       center: {lat: center_lat, lng: center_lng},
       zoom: 12
     });
@@ -72,6 +73,8 @@ function initialize_map(story_points) {
     });
     
     marker.setValues({type: "point", id: num});
+    markers.push(marker);
+    
     
 
     bounds.extend(marker.getPosition());
@@ -97,3 +100,24 @@ function attachListener(marker, num) {
         $('.scrollable').scrollTo($('#' + num),1500);
   });
 }
+
+function panMap(marker, map) {
+  var latLng = marker.getPosition(); // returns LatLng object
+  map.panTo(latLng); // setCenter takes a LatLng object
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
