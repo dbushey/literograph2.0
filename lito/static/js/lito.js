@@ -1,5 +1,5 @@
 var map;
-var story_points_debug; 
+var story_points_list; 
 var story_pk = 0;
 
  $(document).ready(function() {
@@ -10,16 +10,12 @@ var story_pk = 0;
   // Use the story PK to get JSON for this story!
 
   $.getJSON('/story_points_json/' + story_pk + '/', function(jd) {
-
     story_points_json = jd;
-
     var story_points = JSON.parse( story_points_json );
-
     for (i = 0; i < story_points.length; i++) { 
       var x = story_points[i].fields.location_name;
     }
-
-    story_points_debug = story_points;
+    story_points_list = story_points;
 
   initialize_map(story_points);
   
@@ -55,6 +51,7 @@ function initialize_map(story_points) {
     var title = story_points[i].fields.title;
     var loc_name = story_points[i].fields.location_name;
     var text = story_points[i].fields.text;
+    var num = story_points[i].fields.num_order;
 
     var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
@@ -70,7 +67,9 @@ function initialize_map(story_points) {
       position: {lat: lat, lng: lng},
       map: map,
       animation: google.maps.Animation.DROP,
-      contentString: contentString
+      contentString: contentString,
+      icon: '//chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + num + '|FE6256|000000'
+
     });
 
     bounds.extend(marker.getPosition());
