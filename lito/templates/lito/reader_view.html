@@ -15,7 +15,7 @@
         </div>
 
 
-        <div class="col-md-6">
+        <div class="col-md-6 scrollable">
             <div class="story_points">
                 {% if story_points_list %}
                 {% for story_point in story_points_list %}
@@ -31,7 +31,9 @@
                     {% if story_point.youtube_url %}
                         <iframe width="560" height="315" src="{{ story_point.youtube_url }}" frameborder="0" allowfullscreen></iframe>
                     {% endif %}
-                    <div class="text">{{ story_point.text }}</div> 
+                    
+                        <div class="text">{{ story_point.text }}</div> 
+                    
                 </div>
                 {% endfor %}
                 {% else %}
