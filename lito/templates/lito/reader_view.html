@@ -14,7 +14,7 @@
             <div class="story_points">
                 {% if story_points_list %}
                 {% for story_point in story_points_list %}
-                <div id="storypoint_{{ story_point.pk }}">
+                <div id="{{ story_point.num_order }}" class="story_point">
                     <h3>{{ story_point.num_order }}. {{ story_point.title }}</h3>
                     <p>(@{{ story_point.location_name }})</p>
                     {% if story_point.img_url %}

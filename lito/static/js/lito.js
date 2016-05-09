@@ -69,21 +69,31 @@ function initialize_map(story_points) {
       animation: google.maps.Animation.DROP,
       contentString: contentString,
       icon: '//chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + num + '|FE6256|000000'
-
     });
+    
+    marker.setValues({type: "point", id: num});
+    
 
     bounds.extend(marker.getPosition());
 
-    google.maps.event.addListener(marker, 'click', function() { 
+    /*google.maps.event.addListener(marker, 'click', function() { 
         //infowindow.setContent(this.contentString);
         //infowindow.open(map,this);
-    });
+        console.log(marker);
+        $('.scrollable').scrollTo($('#7'),1500);
+    });*/
+
+    attachListener(marker, num);
+
   };
 
   map.fitBounds(bounds);
 
 }
 
-
-
-      
+function attachListener(marker, num) {
+  marker.addListener('click', function() {
+        console.log(num);
+        $('.scrollable').scrollTo($('#' + num),1500);
+  });
+}
