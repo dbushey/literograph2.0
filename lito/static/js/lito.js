@@ -75,8 +75,8 @@ function initialize_map(story_points) {
     bounds.extend(marker.getPosition());
 
     google.maps.event.addListener(marker, 'click', function() { 
-        infowindow.setContent(this.contentString);
-        infowindow.open(map,this);
+        //infowindow.setContent(this.contentString);
+        //infowindow.open(map,this);
     });
   };
 
