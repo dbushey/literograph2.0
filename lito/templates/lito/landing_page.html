@@ -9,7 +9,7 @@
 
             {% for story in story_list %}
                 <div>
-                    <h2><a href="{% url 'reader_view' pk=story.pk %}" title="{{ story.description }}">{{ story.title }}</a></h2>
+                    <h3><a href="{% url 'reader_view' pk=story.pk %}" title="{{ story.description }}">{{ story.title }}</a></h3>
                     <p>By: {{ story.author }}</p>
                 </div>
             {% endfor %}
@@ -21,20 +21,23 @@
         </div>
 
 
+
         
 
         <div>
             {% if user.is_anonymous %}
             <div>
-                <a href="{% url 'register' %}?next={% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign Up</a>
+
+                <a href="{% url 'register' %}?next={% url 'story_list' %}" type="button" class="btn btn-default custom" style="background-color:#d3d3d3" >| Sign Up |</a>
             </div>
             <br><br>
+            
             <div>
-                <a href="{% url 'signin' %}?next={% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Sign In</a>
+                <a href="{% url 'signin' %}?next={% url 'story_list' %}" type="button" class="btn btn-default custom" style="background-color:#d3d3d3" >| Sign In |</a>
             </div>
             {% else %}
-            <div>
-                <a href="{% url 'story_list' %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Go!</a>
+            <div> 
+                <a href="{% url 'story_list' %}" type="button" class="btn btn-default custom" style="background-color:#d3d3d3" >| Go! |</a>
             </div>
               {% endif %}
 

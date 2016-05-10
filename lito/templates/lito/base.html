@@ -83,7 +83,7 @@
         
         <h1><a href="/">Literograph</a></h1>
 
-      <div>
+      <div class="user">
       {{ user }}
       {% if user.is_anonymous %}
       <a href="{% url 'django.contrib.auth.views.login' %}">login</a>

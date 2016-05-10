@@ -4,9 +4,9 @@
   #map-canvas { height: 80% }
   .hidden { display: none; }
 
-    h1 a {
-    color: #FCA205;
-    font-family: 'Lobster'
+    h1, h1 a {
+    color: #000000;
+    font-family: 'Courier'
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 }
 
 .page-header {
-    background-color: #ff9400;
+    background-color: #000000;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
@@ -25,15 +25,25 @@ body {
     text-decoration: none;
 }
 
+.user {
+    color: #ffffff;
+}
+
+.custom {
+    width: 500px !important;
+    margin-top: 10;
+    padding: 20px 20px 20px 20px;
+}
+
 .content {
     margin-left: 40px;
 }
 
-h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
+ h2, h3, h4, p {
+    font-family: 'Helvetica', cursive;
 }
 
-.date {
+/*.date {
     float: right;
     color: #828282;
 }
@@ -59,7 +69,7 @@ h1, h2, h3, h4 {
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
-}
+}*/
 
 
 /* !!! Important !!! */
