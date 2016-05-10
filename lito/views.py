@@ -85,8 +85,14 @@ def parse_yt_url(url):
 
 def set_num_order(story):
     story_points_list = StoryPoint.objects.filter(story=story)
-    largest = max(story_point.num_order for story_point in story_points_list)
+    print(story_points_list)
+    try:
+        largest = max(story_point.num_order for story_point in story_points_list)
+    except ValueError: 
+        return 1
+        
     return largest + 1
+
 
 
 
