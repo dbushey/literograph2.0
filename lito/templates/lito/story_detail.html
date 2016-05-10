@@ -7,11 +7,12 @@
       
         <div class="col-md-6">
             <h1>Story Title: {{ story.title }}</h1>
-            <p>By: {{ story.author }}</p>
-            <a href="{% url 'reader_view' pk=story.pk %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Read Story</a>
+            
+            <a href="{% url 'reader_view' pk=story.pk %}" type="button" class="btn btn-default custom" >| Read Story |</a>
             <br><br>
 
             <h2>Story Points</h2>
+            <p>By: {{ story.author }}</p>
 
             {% if story_points_list %}
             {% for story_point in story_points_list %}
@@ -22,7 +23,7 @@
             {% else %}
 
             <div>
-                <h2>You haven't writen any story points yet. Click the button on the right to start writing.</h2> 
+                <h3>You haven't writen any story points yet. Click the button on the right to start writing.</h3> 
             </div>
 
 
@@ -35,7 +36,7 @@
         </div>
 
         <div>
-            <a href="{% url 'story_point_new' pk=story.pk %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Add Story Point</a>
+            <a href="{% url 'story_point_new' pk=story.pk %}" type="button" class="btn btn-default custom" >| Add Story Point |</a>
         </div>
 
     </div>

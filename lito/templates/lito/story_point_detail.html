@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="story_point">
-    <a href="{% url 'story_detail' pk=story_point.story.pk %}" type="button" class="btn-lg btn-link" style="background-color:orange" >Back</a>
+    <a href="{% url 'story_detail' pk=story_point.story.pk %}" type="button" class="btn btn-ldefault custom" >| Back |</a>
       <h1>{{ story_point.num_order }}. {{ story_point.title }}</h1>
         {% if story_point.location_name %}
             <div class="location">
