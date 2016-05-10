@@ -1,7 +1,8 @@
 var map;
-var story_points_list; 
+var story_points_list;
 var story_pk = 0;
 var markers = [];
+var waypoints;
 
  $(document).ready(function() {
 
@@ -13,16 +14,29 @@ var markers = [];
   $.getJSON('/story_points_json/' + story_pk + '/', function(jd) {
     story_points_json = jd;
     var story_points = JSON.parse( story_points_json );
-    for (i = 0; i < story_points.length; i++) { 
+    for (i = 0; i < story_points.length; i++) {
       var x = story_points[i].fields.location_name;
     }
     story_points_list = story_points;
 
   initialize_map(story_points);
-  
+
   });
 
   //google.maps.event.addDomListener(window, 'load', initialize);
+
+  // Add the Waypoints to enable scrolling moves the map
+  console.log("Adding waypoints");
+  waypoints = $(".story_point").waypoint(function() {
+      console.log('Reached waypoint: ' + this.element.id);
+      var marker_id = Number(this.element.id) - 1;
+      marker = markers[marker_id];
+      panMap(marker, map);
+
+  }, {
+      context: $(".story_points").parent(),
+      offset: "10"
+  });
 
 });
 
@@ -30,12 +44,12 @@ function initialize_map(story_points) {
   console.log("creating map");
   /*
   TODO:
-    * Set the map to load centered at the latitude an longitude 
+    * Set the map to load centered at the latitude an longitude
       of the first story point
     * Build a marker for each storypoint
 
   */
-  
+
   var center_lat = parseFloat(story_points[0].fields.latitude);
   var center_lng = parseFloat(story_points[0].fields.longitude);
   map = new google.maps.Map(document.getElementById("map"), {
@@ -46,7 +60,7 @@ function initialize_map(story_points) {
 
   var bounds = new google.maps.LatLngBounds();
 
-  for (i = 0; i < story_points.length; i++) { 
+  for (i = 0; i < story_points.length; i++) {
     var lat = parseFloat(story_points[i].fields.latitude);
     var lng = parseFloat(story_points[i].fields.longitude);
     var title = story_points[i].fields.title;
@@ -71,15 +85,15 @@ function initialize_map(story_points) {
       contentString: contentString,
       icon: '//chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + num + '|FE6256|000000'
     });
-    
+
     marker.setValues({type: "point", id: num});
     markers.push(marker);
-    
-    
+
+
 
     bounds.extend(marker.getPosition());
 
-    /*google.maps.event.addListener(marker, 'click', function() { 
+    /*google.maps.event.addListener(marker, 'click', function() {
         //infowindow.setContent(this.contentString);
         //infowindow.open(map,this);
         console.log(marker);

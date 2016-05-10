@@ -11,7 +11,7 @@
 
 
         <div class="col-md-6 scrollable">
-            <div class="story_points">
+            <div id="story_points" class="story_points">
                 {% if story_points_list %}
                 {% for story_point in story_points_list %}
                 <div id="{{ story_point.num_order }}" class="story_point">
@@ -26,20 +26,20 @@
                     {% if story_point.youtube_url %}
                         <iframe width="560" height="315" src="{{ story_point.youtube_url }}" frameborder="0" allowfullscreen></iframe>
                     {% endif %}
-                    
-                        <div class="text">{{ story_point.text }}</div> 
-                    
+
+                        <div class="text">{{ story_point.text }}</div>
+
                 </div>
                 {% endfor %}
                 {% else %}
 
                 <div>
-                    <p>The author hasn't write anything here yet. Please come back later.</p> 
+                    <p>The author hasn't write anything here yet. Please come back later.</p>
                 </div>
                 {% endif %}
 
             </div>
-        </div> 
+        </div>
 
         <div class="col-md-6">
            <div id="map">
@@ -55,8 +55,9 @@
     </div>
 
     <script type="text/javascript" src="{% static 'js/lito.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.waypoints.min.js' %}"></script>
 
 {% endblock %}
 
 
-            
+
