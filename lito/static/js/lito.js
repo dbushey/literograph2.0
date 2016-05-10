@@ -116,6 +116,7 @@ function attachListener(marker, num) {
 }
 
 function panMap(marker, map) {
+  map.setZoom(12)
   var latLng = marker.getPosition(); // returns LatLng object
   map.panTo(latLng); // setCenter takes a LatLng object
 }
