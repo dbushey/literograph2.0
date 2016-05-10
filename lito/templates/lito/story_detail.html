@@ -16,7 +16,7 @@
             {% if story_points_list %}
             {% for story_point in story_points_list %}
                 <div>
-                    <h3><a href="{% url 'story_point_detail' pk=story_point.pk %}">{{ story_point.title }}</a></h3>    
+                    <h3><a href="{% url 'story_point_detail' pk=story_point.pk %}">{{ story_point.num_order }}. {{ story_point.title }}</a></h3>    
                 </div>
             {% endfor %}
             {% else %}
