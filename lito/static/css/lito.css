@@ -80,7 +80,8 @@ body {
 }
 
 .scrollable {
-    height: 400px; 
+    width: 50%;
+    height: 65%;
     overflow-y: auto;
 }
 
