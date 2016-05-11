@@ -85,8 +85,13 @@ body {
     overflow-y: auto;
 }
 
+.story_point {
+    width: 100%;
+}
 
-
+.story_point_detail {
+    width: 50%;
+}
 
 
 

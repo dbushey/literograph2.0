@@ -1,31 +1,31 @@
 {% extends 'lito/base.html' %}
 
 {% block content %}
-    <div class="story_point">
+    <div class="story_point_detail">
     <a href="{% url 'story_detail' pk=story_point.story.pk %}" type="button" class="btn btn-ldefault custom" >| Back |</a>
       <h1>{{ story_point.num_order }}. {{ story_point.title }}</h1>
         {% if story_point.location_name %}
             <div class="location">
                 <h2>(@{{ story_point.location_name }})</h2>
-                Latitude: {{story_point.latitude}}, 
+                Latitude: {{story_point.latitude}},
                 Longitude: {{story_point.longitude}}
 
                 <div id="map_detail"></div>
-    
+            </div>
         {% endif %}
-        
-        
+
+
         {% if story_point.img_url %}
-          <img src="{{ story_point.img_url }}" width="500" height="350">
+          <img src="{{ story_point.img_url }}" width="100%" >
         {% endif %}
         {% if story_point.soundcloud_url %}
-          <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url={{ story_point.soundcloud_url }}&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+          <iframe width="100%" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url={{ story_point.soundcloud_url }}&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
         {% endif %}
         {% if story_point.youtube_url %}
           <iframe width="560" height="315" src="{{ story_point.youtube_url }}" frameborder="0" allowfullscreen></iframe>
         {% endif %}
         <p>{{ story_point.text|linebreaks }}</p>
-    </div>
+
 
 
     <script>
