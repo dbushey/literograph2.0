@@ -40,7 +40,7 @@ def story_new(request):
 @login_required
 def story_detail(request, pk):
     story = get_object_or_404(Story, pk=pk)
-    story_points_list = StoryPoint.objects.filter(story=story)
+    story_points_list = StoryPoint.objects.filter(story=story).order_by('num_order')
     return render(request, 'lito/story_detail.html', {'story': story, 'story_points_list': story_points_list})
 
 def story_point_detail(request, pk):
@@ -76,7 +76,7 @@ def reader_view(request, pk):
 
 def story_points_json(request, pk):
     story = get_object_or_404(Story, pk=pk)
-    storypoints_as_json = serializers.serialize('json', StoryPoint.objects.filter(story=story))
+    storypoints_as_json = serializers.serialize('json', StoryPoint.objects.filter(story=story).order_by('num_order'))
     return HttpResponse(json.dumps(storypoints_as_json), content_type='application/json')
 
 def parse_yt_url(url):
@@ -84,7 +84,7 @@ def parse_yt_url(url):
     return embed_url.format(url.split("=")[1])
 
 def set_num_order(story):
-    story_points_list = StoryPoint.objects.filter(story=story)
+    story_points_list = StoryPoint.objects.filter(story=story).order_by('num_order')
     print(story_points_list)
     try:
         largest = max(story_point.num_order for story_point in story_points_list)
