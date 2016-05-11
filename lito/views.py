@@ -14,7 +14,7 @@ def landing_page(request):
     return render(request, 'lito/landing_page.html', {'story_list': story_list})
 
 @login_required
-def story_list(request): 
+def story_list(request):
     author = request.user
     story_list = Story.objects.filter(author=author)
     return render(request, 'lito/story_list.html', {'story_list': story_list})
@@ -71,13 +71,13 @@ def story_point_new(request, pk):
 
 def reader_view(request, pk):
     story = get_object_or_404(Story, pk=pk)
-    story_points_list = StoryPoint.objects.filter(story=story)
+    story_points_list = StoryPoint.objects.filter(story=story).order_by('num_order')
     return render(request, 'lito/reader_view.html', {'story': story, 'story_points_list': story_points_list})
 
 def story_points_json(request, pk):
-    story = get_object_or_404(Story, pk=pk) 
+    story = get_object_or_404(Story, pk=pk)
     storypoints_as_json = serializers.serialize('json', StoryPoint.objects.filter(story=story))
-    return HttpResponse(json.dumps(storypoints_as_json), content_type='application/json') 
+    return HttpResponse(json.dumps(storypoints_as_json), content_type='application/json')
 
 def parse_yt_url(url):
     embed_url = "https://www.youtube.com/embed/{}"
@@ -88,9 +88,9 @@ def set_num_order(story):
     print(story_points_list)
     try:
         largest = max(story_point.num_order for story_point in story_points_list)
-    except ValueError: 
+    except ValueError:
         return 1
-        
+
     return largest + 1
 
 

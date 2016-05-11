@@ -24,7 +24,6 @@ var waypoints;
   });
 
   //google.maps.event.addDomListener(window, 'load', initialize);
-
   // Add the Waypoints to enable scrolling moves the map
   console.log("Adding waypoints");
   waypoints = $(".story_point").waypoint(function() {
@@ -83,7 +82,7 @@ function initialize_map(story_points) {
       map: map,
       animation: google.maps.Animation.DROP,
       contentString: contentString,
-      icon: '//chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + num + '|FE6256|000000'
+      icon: '//chart.googleapis.com/chart?chst=d_map_pin_letter&chld=' + num + '|FE6256|000000'
     });
 
     marker.setValues({type: "point", id: num});
