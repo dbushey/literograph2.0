@@ -16,5 +16,4 @@ To play with the way stories are composed and read
 + Backend and frontend in Python/Django
 + Heruko deployment 
 
-## Screenshot
-![Should I bike?](https://i.imgur.com/vcbcqjr.png)
+
