@@ -1,6 +1,6 @@
 chardet==2.2.1
 dj-database-url==0.4.1
-Django==1.9.4
+Django==1.11.28
 gunicorn==19.4.5
 html5lib==0.999
 pycurl==7.19.3
