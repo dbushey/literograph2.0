@@ -2,7 +2,7 @@ chardet==2.2.1
 dj-database-url==0.4.1
 Django==1.9.4
 gunicorn==19.4.5
-html5lib==0.999
+html5lib==0.999999999
 pycurl==7.19.3
 requests==2.2.1
 six==1.5.2
